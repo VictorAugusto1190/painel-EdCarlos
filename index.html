@@ -91,11 +91,33 @@
         width: 100%;
         max-width: 400px;
       }
+      .obs-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        text-align: left;
+      }
+      .obs-container label {
+        font-family: sans-serif;
+        font-size: 14px;
+        color: #333;
+      }
+      .obs-textarea {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        resize: vertical;
+        outline: none;
+      }
       .assin-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
+        margin-top: 5px;
         width: 100%;
       }
       .assin-input {
@@ -118,9 +140,7 @@
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        transition:
-          background 0.2s,
-          transform 0.1s;
+        transition: background 0.2s, transform 0.1s;
         width: 100%;
         max-width: 280px;
       }
@@ -184,88 +204,47 @@
   <body>
     <div class="titulo-paragrafo">
       <h1>Check List do Líder - EDCARLOS - Controle Diário de Higiene e Segurança</h1>
-      <h2>
-        Use este checklist diariamente. O que não é verificado não é controlado.
-      </h2>
+      <h2>Use este checklist diariamente. O que não é verificado não é controlado.</h2>
       <h3>Líder Responsável: <strong>EdCarlos</strong></h3>
     </div>
 
     <div class="secoes">
       <section>
-        <label
-          ><input type="checkbox" /> Todos os colaboradores com uniforme</label
-        >
-        <label
-          ><input type="checkbox" /> Mãos lavadas antes de iniciar o
-          preparo</label
-        >
-        <label
-          ><input type="checkbox" /> Temperatura das câmaras e geladeiras
-          verificadas e registradas</label
-        >
-        <label
-          ><input type="checkbox" /> Alimentos identificados com nome e data de
-          validade</label
-        >
-        <label
-          ><input type="checkbox" /> Organização da geladeira: cru embaixo,
-          pronto em cima</label
-        >
-        <label
-          ><input type="checkbox" /> Tábuas e facas separadas por cor e
-          higienizadas</label
-        >
-        <label
-          ><input type="checkbox" /> Nenhum colaborador com sintomas de doença
-          na cozinha</label
-        >
-        <label
-          ><input type="checkbox" /> Área de preparo limpa e organizada</label
-        >
+        <label><input type="checkbox" /> Todos os colaboradores com uniforme</label>
+        <label><input type="checkbox" /> Mãos lavadas antes de iniciar o preparo</label>
+        <label><input type="checkbox" /> Temperatura das câmaras e geladeiras verificadas e registradas</label>
+        <label><input type="checkbox" /> Alimentos identificados com nome e data de validade</label>
+        <label><input type="checkbox" /> Organização da geladeira: cru embaixo, pronto em cima</label>
+        <label><input type="checkbox" /> Tábuas e facas separadas por cor e higienizadas</label>
+        <label><input type="checkbox" /> Nenhum colaborador com sintomas de doença na cozinha</label>
+        <label><input type="checkbox" /> Área de preparo limpa e organizada</label>
       </section>
 
       <section>
-        <label
-          ><input type="checkbox" /> Sobras identificadas, datadas no
-          encerramento corretamente</label
-        >
-        <label
-          ><input type="checkbox" /> Temperaturas registradas no
-          encerramento</label
-        >
-        <label
-          ><input type="checkbox" /> Equipamentos limpos e higienizados</label
-        >
-        <label
-          ><input type="checkbox" /> Lixo retirado e coletores
-          higienizados</label
-        >
-        <label
-          ><input type="checkbox" /> Superfícies de preparo limpas e
-          sanitizadas</label
-        >
-        <label
-          ><input type="checkbox" /> Câmaras e geladeiras organizadas e
-          fechadas</label
-        >
-        <label
-          ><input type="checkbox" /> Registro de não conformidades do dia
-          preenchido</label
-        >
+        <label><input type="checkbox" /> Sobras identificadas, datadas no encerramento corretamente</label>
+        <label><input type="checkbox" /> Temperaturas registradas no encerramento</label>
+        <label><input type="checkbox" /> Equipamentos limpos e higienizados</label>
+        <label><input type="checkbox" /> Lixo retirado e coletores higienizados</label>
+        <label><input type="checkbox" /> Superfícies de preparo limpas e sanitizadas</label>
+        <label><input type="checkbox" /> Câmaras e geladeiras organizadas e fechadas</label>
+        <label><input type="checkbox" /> Registro de não conformidades do dia preenchido</label>
         <label><input type="checkbox" /> Área de lixo separada e limpa</label>
       </section>
     </div>
 
     <div class="footer-container">
       <h2 id="data" style="font-size: 18px"></h2>
-      <div class="assin-container">
-        <input
-          class="assin-input"
-          id="assinatura"
-          type="text"
-          placeholder="Assinatura de EdCarlos"
-        />
+
+      <!-- Campo de Observações do Líder -->
+      <div class="obs-container">
+        <label for="observacoes"><strong>Observações do Dia (Opcional):</strong></label>
+        <textarea id="observacoes" class="obs-textarea" placeholder="Digite alguma observação ou ocorrência importante..."></textarea>
       </div>
+
+      <div class="assin-container">
+        <input class="assin-input" id="assinatura" type="text" placeholder="Assinatura de EdCarlos" />
+      </div>
+
       <button id="btnRegistrar">Registrar Checklist</button>
     </div>
 
@@ -274,9 +253,7 @@
       <div class="modal-content">
         <h3 style="color: #28a745">✅ Checklist Registrado!</h3>
         <p>Os dados do dia foram salvos/atualizados com sucesso.</p>
-        <button id="btnFecharModal" style="background-color: #007bff">
-          OK
-        </button>
+        <button id="btnFecharModal" style="background-color: #007bff">OK</button>
       </div>
     </div>
 
@@ -285,15 +262,13 @@
       <div class="modal-content">
         <h3 style="color: #dc3545">⚠️ Atenção!</h3>
         <p>Por favor, digite a assinatura antes de enviar o checklist.</p>
-        <button id="btnFecharAlerta" style="background-color: #dc3545">
-          Entender
-        </button>
+        <button id="btnFecharAlerta" style="background-color: #dc3545">Entender</button>
       </div>
     </div>
 
     <script>
       const SUPABASE_URL = "https://dhhdzqyymfoxsupdrbzc.supabase.co";
-      const SUPABASE_KEY = "sb_publishable_BCsQH9GoCB6Dz3y7DjxIZA_ykZAjRYi"; // Chave publica anon
+      const SUPABASE_KEY = "sb_publishable_BCsQH9GoCB6Dz3y7DjxIZA_ykZAjRYi"; 
       const supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY,
@@ -318,63 +293,58 @@
       const btnFecharModal = document.getElementById("btnFecharModal");
       const btnFecharAlerta = document.getElementById("btnFecharAlerta");
 
-      btnFecharModal.addEventListener(
-        "click",
-        () => (modal.style.display = "none"),
-      );
-      btnFecharAlerta.addEventListener(
-        "click",
-        () => (modalAlerta.style.display = "none"),
-      );
+      btnFecharModal.addEventListener("click", () => (modal.style.display = "none"));
+      btnFecharAlerta.addEventListener("click", () => (modalAlerta.style.display = "none"));
 
-      document
-        .getElementById("btnRegistrar")
-        .addEventListener("click", async () => {
-          const assinatura = document.getElementById("assinatura").value.trim();
+      document.getElementById("btnRegistrar").addEventListener("click", async () => {
+        const assinatura = document.getElementById("assinatura").value.trim();
+        const observacoes = document.getElementById("observacoes").value.trim();
 
-          if (!assinatura) {
-            modalAlerta.style.display = "flex";
-            return;
+        if (!assinatura) {
+          modalAlerta.style.display = "flex";
+          return;
+        }
+
+        const conformes = [];
+        const naoConformes = [];
+
+        checkboxes.forEach((input) => {
+          const texto = input.parentElement.innerText.trim();
+          if (input.checked) {
+            conformes.push(texto);
+          } else {
+            naoConformes.push(texto);
           }
-
-          const conformes = [];
-          const naoConformes = [];
-
-          checkboxes.forEach((input) => {
-            const texto = input.parentElement.innerText.trim();
-            if (input.checked) {
-              conformes.push(texto);
-            } else {
-              naoConformes.push(texto);
-            }
-          });
-
-          const { error } = await supabaseClient.from("lista_do_lider").upsert(
-            [
-              {
-                data: dataISO,
-                lider: "EdCarlos",
-                assinatura: assinatura,
-                conformes: conformes,
-                nao_conformes: naoConformes,
-              },
-            ],
-            { onConflict: "data" },
-          );
-
-          if (error) {
-            alert("Erro ao salvar no banco de dados: " + error.message);
-            return;
-          }
-
-          modal.style.display = "flex";
-
-          document.getElementById("assinatura").value = "";
-          checkboxes.forEach((cb) => {
-            cb.checked = false;
-            cb.parentElement.style.color = "initial";
-          });
         });
+
+        const { error } = await supabaseClient.from("lista_do_lider").upsert(
+          [
+            {
+              data: dataISO,
+              lider: "EdCarlos",
+              assinatura: assinatura,
+              conformes: conformes,
+              nao_conformes: naoConformes,
+              observacoes: observacoes, // Enviando o texto da observação para a nova coluna
+            },
+          ],
+          { onConflict: "data" },
+        );
+
+        if (error) {
+          alert("Erro ao salvar no banco de dados: " + error.message);
+          return;
+        }
+
+        modal.style.display = "flex";
+
+        document.getElementById("assinatura").value = "";
+        document.getElementById("observacoes").value = "";
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+          cb.parentElement.style.color = "initial";
+        });
+      });
     </script>
   </body>
 </html>
